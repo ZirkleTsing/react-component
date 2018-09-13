@@ -34,6 +34,14 @@ const baseConfig = {
       template: path.join(appRoot, 'template.html')
     })
   ],
+  devtool: 'inline-source-map',
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      '@common': path.join(appRoot, 'common'),
+      '@': path.join(appRoot, 'lib')
+    }
+  },
   module: {
     rules: [
       {
@@ -42,7 +50,8 @@ const baseConfig = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['transform-class-properties']
           }
         }
       }, {
@@ -60,6 +69,19 @@ const baseConfig = {
             ]}
           }, {
           loader: 'less-loader'
+        }]
+      }, {
+        test: /\.css$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'postcss-loader',
+          options: {
+          plugins: [
+            require('autoprefixer')()
+          ]}
         }]
       }, {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,

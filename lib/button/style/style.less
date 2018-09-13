@@ -1,0 +1,24 @@
+
+@import './mixin.less';
+
+@btn-prefix-cls: rc-btn;
+
+.@{btn-prefix-cls} {
+  .btn();
+  &:active,
+  &:focus {
+    outline: none;
+  }
+  &-lg {
+    .button-size(@btn-height-lg; @btn-padding-lg; @btn-font-size-lg; @btn-border-radius-lg);
+  }
+  &-sm {
+    .button-size(@btn-height-sm; @btn-padding-sm; @btn-font-size-sm; @btn-border-radius-sm);
+  }
+
+  &-default {
+  }
+  &-primary {
+    .button-variant-primary(pink, blue);
+  } 
+}

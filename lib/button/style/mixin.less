@@ -1,0 +1,79 @@
+@btn-height-base: 40px;
+@btn-width-base: 100px;
+@btn-font-size-base: 12px;
+@btn-line-height-base: @btn-height-base;
+@btn-padding-base: 5px 15px;
+@btn-border-radius-base: 4px;
+
+@btn-height-lg: 50px;
+@btn-width-lg: 120px;
+@btn-font-size-lg: 14px;
+@btn-padding-lg: 8px 18px;
+@btn-border-radius-lg: 4px;
+
+@btn-height-sm: 40px;
+@btn-width-sm: 90px;
+@btn-font-size-sm: 12px;
+@btn-padding-sm: 3px 12x;
+@btn-border-radius-sm: 4px;
+
+@btn-disable-color: #333;
+@btn-disable-bg: #444;
+@btn-disable-border: @btn-disable-bg;
+
+.button-size(@height; @padding; @font-size; @border-radius) {
+  padding: @padding;
+  font-size: @font-size;
+  border-radius: @border-radius;
+  height: @height;  
+}
+
+.button-color(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+  
+}
+
+.btn() {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  .button-size(@btn-height-base; @btn-padding-base; @btn-font-size-base; @btn-border-radius-base);
+  user-select: none;
+  transition: all .3s ease-in-out;
+  position: relative;
+}
+
+.button-disabled() {
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      .button-color(@btn-disable-color; @btn-disable-bg; @btn-disable-border);
+    }
+  }
+}
+
+
+.button-variant-primary(@color; @background) {
+  .button-color(@color, @background, @background);
+  &:hover,
+  &:focus {
+    .button-color(@color; red; red);
+  }
+  &:active,
+  &.active {
+    .button-color(@color; red; red);
+  }
+
+  .button-disabled();
+}
