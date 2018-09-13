@@ -45,6 +45,28 @@ const baseConfig = {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
+      }, {
+        test: /\.less$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader',
+          // options: { importLoaders: 1 }
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: [
+              require('autoprefixer')()
+            ]}
+          }, {
+          loader: 'less-loader'
+        }]
+      }, {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
       }
     ]
   }
