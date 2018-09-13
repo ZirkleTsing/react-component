@@ -2,6 +2,7 @@
 @import './mixin.less';
 
 @btn-prefix-cls: rc-btn;
+@btn-clicked-cls: ~"@{btn-prefix-cls}-clicked";
 
 .@{btn-prefix-cls} {
   .btn();
@@ -16,9 +17,10 @@
     .button-size(@btn-height-sm; @btn-padding-sm; @btn-font-size-sm; @btn-border-radius-sm);
   }
 
-  &-default {
-  }
   &-primary {
-    .button-variant-primary(pink, blue);
+    .button-variant-primary();
+    &.@{btn-clicked-cls} {
+      .button-clicked();
+    }
   } 
 }

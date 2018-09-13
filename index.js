@@ -8,7 +8,7 @@ const root = document.getElementById('root')
 
 const render = (Component) => {
   ReactDOM.render(
-    <div><Component /></div>,
+    <Component />,
     root
   )
 }
