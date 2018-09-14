@@ -1,5 +1,7 @@
 import React from 'react'
 import { Button } from '@/button';
+import { action } from '@storybook/addon-actions';
+import './style.less';
 
 export default () => {
   return (
