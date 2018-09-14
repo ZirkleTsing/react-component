@@ -133,6 +133,43 @@
   }
 }
 
+.button-variant-default() {
+  @default-color: rgba(0, 0, 0, .65);
+  @default-background: #fff;
+  @default-border: #d9d9d9;
+
+  @default-hover-color: #4019ff;
+  @default-hover-background: @default-background;
+  @default-hover-border: @default-hover-color;
+
+  @default-active-color: #096dd9;
+  @default-active-background: @default-background;
+  @default-active-border: @default-active-color;
+
+  .button-color(@default-color, @default-background, @default-border);
+  &:hover,
+  &:focus {
+    .button-color(@default-hover-color, @default-hover-background, @default-hover-border);
+  }
+
+  &:active,
+  &.active {
+    .button-color(@default-active-color, @default-active-background, @default-active-border);
+  }
+  .button-disabled();
+
+  &.@{btn-clicked-cls} {
+    .button-clicked-default(@default-hover-border; @default-hover-background);
+  }
+}
+
+.button-clicked-default(@border; @background) {
+  .button-clicked(@border);
+  &:after {
+    background-color: @background;
+  }
+}
+
 .button-clicked(@background) {
   &:after {
     content: '';

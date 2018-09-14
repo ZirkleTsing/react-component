@@ -28,6 +28,16 @@ storiesOf('Button', module)
           >
             Danger
           </Button>
+          <Button
+            type="default"
+            onClick={() => {
+              console.log('demo')
+              action('clicked')
+            }}
+            className="storybook-rc-btn"
+          >
+            Danger
+          </Button>
         </React.Fragment>
       )
   })
