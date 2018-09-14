@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { Button } from '@/button';
 
 storiesOf('Button', module)
-  .add('with text', () => {
+  .add('常规', () => {
     return (
       <Button
         style={{ marginLeft: '20px', marginTop: '20px' }}

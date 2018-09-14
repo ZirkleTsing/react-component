@@ -1,9 +1,6 @@
 
 @import './mixin.less';
 
-@btn-prefix-cls: rc-btn;
-@btn-clicked-cls: ~"@{btn-prefix-cls}-clicked";
-
 .@{btn-prefix-cls} {
   .btn();
   &:active,
@@ -19,8 +16,8 @@
 
   &-primary {
     .button-variant-primary();
-    &.@{btn-clicked-cls} {
-      .button-clicked();
-    }
-  } 
+  }
+  &-danger {
+    .button-variant-danger();
+  }
 }
