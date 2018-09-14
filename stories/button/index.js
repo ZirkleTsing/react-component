@@ -37,7 +37,7 @@ export default () => {
         }}
         className="storybook-rc-btn"
       >
-        Danger
+        Default
       </Button>
       <Button
         type="dashed"
@@ -47,7 +47,17 @@ export default () => {
         }}
         className="storybook-rc-btn"
       >
-        Danger
+        Dashed
+      </Button>
+      <Button
+        icon="add"
+        onClick={() => {
+          console.log('demo')
+          action('clicked')
+        }}
+        className="storybook-rc-btn"
+      >
+        Add
       </Button>
     </React.Fragment>
   )
