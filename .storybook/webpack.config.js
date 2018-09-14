@@ -5,7 +5,8 @@ module.exports = (storybookBaseConfig, configType) => {
   storybookBaseConfig.resolve.alias = {
     ...storybookBaseConfig.resolve.alias,
     '@common': path.join(appRoot, 'common'),
-    '@': path.join(appRoot, 'lib')
+    '@': path.join(appRoot, 'lib'),
+    '@stories': path.join(appRoot, 'stories')
   }
   storybookBaseConfig.module.rules.push({
     test: /\.less$/,

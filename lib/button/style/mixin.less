@@ -159,11 +159,15 @@
   .button-disabled();
 
   &.@{btn-clicked-cls} {
-    .button-clicked-default(@default-hover-border; @default-hover-background);
+    .button-clicked-ghost(@default-hover-border; @default-hover-background);
   }
 }
+.button-variant-dashed() {
+  .button-variant-default();
+  border-style: dashed;
+}
 
-.button-clicked-default(@border; @background) {
+.button-clicked-ghost(@border; @background) {
   .button-clicked(@border);
   &:after {
     background-color: @background;
