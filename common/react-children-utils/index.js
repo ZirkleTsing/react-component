@@ -16,7 +16,7 @@ export function findShownChildInChildrenByKey(children, key, showProp) {
     children.forEach(child => {
       if (child && child.key === key && child.props[showProp]) {
         if (ret) {
-          throw new Error('two child same key in <rc-Animate>, please checkout to make sure unique key!')
+          throw new Error('two child same key in <target-component>, please checkout to make sure unique key!')
         }
         ret = child
       }
@@ -31,7 +31,7 @@ export function findChildInChildrenByKey(children, key) {
     children.forEach(child => {
       if (child && child.key === key) {
         if (ret) {
-          throw new Error('two child same key in <rc-Animate>, please checkout to make sure unique key!')
+          throw new Error('two child same key in <target-component>, please checkout to make sure unique key!')
         }
       }
       ret = child
