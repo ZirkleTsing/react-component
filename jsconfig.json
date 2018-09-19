@@ -6,7 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "baseUrl": ".",
-    "paths": {
+    "paths": { // https://code.visualstudio.com/docs/languages/jsconfig
       "@common/*": ["./common/*"],
       "@stories/*": ["./stories/*"],
       "@/*": ["./lib/*"],
