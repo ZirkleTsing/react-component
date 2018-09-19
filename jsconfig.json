@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs", // https://github.com/Microsoft/vscode/issues/33964 index.js broken issue
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@common/*": ["./common/*"],
+      "@stories/*": ["./stories/*"],
+      "@/*": ["./lib/*"],
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
