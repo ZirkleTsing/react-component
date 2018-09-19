@@ -1,4 +1,4 @@
-import "babel-polyfill"
+import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './lib/App.js'
@@ -14,8 +14,8 @@ const render = (Component) => {
 }
 
 render(App)
-if(module.hot) {
-  module.hot.accept('./lib/App.js', function() {
+if (module.hot) {
+  module.hot.accept('./lib/App.js', function () {
     const NextApp = require('./lib/App.js').default
     render(NextApp)
   })

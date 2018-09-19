@@ -1,6 +1,4 @@
-
-
-function getMode(env) {
+function getMode (env) {
   console.log('env:', env)
   return env || 'production'
 }

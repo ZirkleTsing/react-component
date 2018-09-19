@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function mapChildrenToArray(children) {
+export function mapChildrenToArray (children) {
   // If children is a keyed fragment or array it will be traversed
   // If children is null or undefined, returns null or undefined rather than an array.
   let ret = []
@@ -10,7 +10,7 @@ export function mapChildrenToArray(children) {
   return ret
 }
 
-export function findShownChildInChildrenByKey(children, key, showProp) {
+export function findShownChildInChildrenByKey (children, key, showProp) {
   let ret = null
   if (children) {
     children.forEach(child => {
@@ -25,7 +25,7 @@ export function findShownChildInChildrenByKey(children, key, showProp) {
   return ret
 }
 
-export function findChildInChildrenByKey(children, key) {
+export function findChildInChildrenByKey (children, key) {
   let ret = null
   if (children) {
     children.forEach(child => {

@@ -1,0 +1,6 @@
+/dist/**
+/internal/**
+/node_modules/**
+!.eslintrc.js
+/docs/**
+/build/**

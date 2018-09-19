@@ -28,6 +28,13 @@ const baseConfig = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        eslint: {
+          configFile: path.join(appRoot, '.eslintrc')
+        }
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'lib',
       filename: 'index.html',
@@ -45,6 +52,13 @@ const baseConfig = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /.(js|jsx)$/,
+        exclude: [
+          path.join(appRoot, 'node_modules')
+        ],
+        loader: 'eslint-loader'
+      }, {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -59,15 +73,16 @@ const baseConfig = {
         use: [{
           loader: 'style-loader'
         }, {
-          loader: 'css-loader',
+          loader: 'css-loader'
           // options: { importLoaders: 1 }
         }, {
           loader: 'postcss-loader',
           options: {
             plugins: [
               require('autoprefixer')()
-            ]}
-          }, {
+            ]
+          }
+        }, {
           loader: 'less-loader'
         }]
       }, {
@@ -79,9 +94,10 @@ const baseConfig = {
         }, {
           loader: 'postcss-loader',
           options: {
-          plugins: [
-            require('autoprefixer')()
-          ]}
+            plugins: [
+              require('autoprefixer')()
+            ]
+          }
         }]
       }, {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
