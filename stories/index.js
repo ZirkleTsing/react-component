@@ -3,4 +3,4 @@ import { storiesOf } from '@storybook/react';
 import Button from '@stories/button'
 
 storiesOf('Button', module)
-  .add('常规', () =>  <Button/>)
+  .add('常规', () => <Button/>)
