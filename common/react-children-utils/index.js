@@ -9,3 +9,33 @@ export function mapChildrenToArray(children) {
   })
   return ret
 }
+
+export function findShownChildInChildrenByKey(children, key, showProp) {
+  let ret = null
+  if (children) {
+    children.forEach(child => {
+      if (child && child.key === key && child.props[showProp]) {
+        if (ret) {
+          throw new Error('two child same key in <rc-Animate>, please checkout to make sure unique key!')
+        }
+        ret = child
+      }
+    })
+  }
+  return ret
+}
+
+export function findChildInChildrenByKey(children, key) {
+  let ret = null
+  if (children) {
+    children.forEach(child => {
+      if (child && child.key === key) {
+        if (ret) {
+          throw new Error('two child same key in <rc-Animate>, please checkout to make sure unique key!')
+        }
+      }
+      ret = child
+    })
+  }
+  return ret
+}
