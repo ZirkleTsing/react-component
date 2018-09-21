@@ -39,3 +39,20 @@ export function findChildInChildrenByKey (children, key) {
   }
   return ret
 }
+
+export function isSameChildren (c1, c2, showProp) {
+  let same = c1.length === c2.length
+  if (same) {
+    c1.forEach((child, index) => {
+      const comparedChildren = c2[index]
+      if (child && !comparedChildren) {
+        same = false
+      } else if (child.key !== comparedChildren.key) {
+        same = false
+      } else if (showProp && child.props[showProp] !== comparedChildren.props[showProp]) {
+        same = false
+      }
+    })
+  }
+  return same
+}
