@@ -56,3 +56,33 @@ export function isSameChildren (c1, c2, showProp) {
   }
   return same
 }
+
+export function mergeChildren (prev, next) {
+  let ret = [];
+
+  // For each key of `next`, the list of keys to insert before that key in
+  // the combined list
+  const nextChildrenPending = {};
+  let pendingChildren = [];
+  prev.forEach((child) => {
+    if (child && findChildInChildrenByKey(next, child.key)) {
+      if (pendingChildren.length) {
+        nextChildrenPending[child.key] = pendingChildren;
+        pendingChildren = [];
+      }
+    } else {
+      pendingChildren.push(child);
+    }
+  });
+
+  next.forEach((child) => {
+    if (child && nextChildrenPending.hasOwnProperty(child.key)) {
+      ret = ret.concat(nextChildrenPending[child.key]);
+    }
+    ret.push(child);
+  });
+
+  ret = ret.concat(pendingChildren);
+
+  return ret;
+}
