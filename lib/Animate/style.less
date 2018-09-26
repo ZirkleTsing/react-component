@@ -1,3 +1,10 @@
+.animate-config(@duration, @time-function) {
+  animation-duration: @duration;
+  animation-fill-mode: both;
+  animation-timing-function: @time-function;
+  animation-play-state: paused;
+}
+
 .box {
   background:red;
   width:100px;
@@ -6,17 +13,11 @@
 
 .rc-animate-example-appear, .rc-animate-example-enter {
   opacity: 0;
-  animation-direction: .3s;
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(.55, 0, .55, .2);
-  animation-play-state: paused;
+  .animate-config(.3s, cubic-bezier(.55, 0, .55, .2));
 }
 
 .rc-animate-example-leave {
-  animation-duration: 0.3s;
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
-  animation-play-state: paused;
+  .animate-config(.3s, cubic-bezier(.55, 0, .55, .2));
 }
 
 .rc-animate-example-appear.rc-animate-example-appear-active,
