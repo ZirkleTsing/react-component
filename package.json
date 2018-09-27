@@ -29,6 +29,7 @@
     "@babel/preset-env": "7.0.0",
     "@babel/preset-react": "7.0.0",
     "@storybook/addon-actions": "3.4.10",
+    "@storybook/addon-console": "1.0.4",
     "@storybook/react": "4.0.0-alpha.16",
     "antd": "3.9.2",
     "app-root-path": "2.1.0",
