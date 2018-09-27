@@ -1,4 +1,5 @@
 import React from 'react';
+import '@common/style/index.less'
 import { getStoriesOf } from '@stories/utils'
 // import { action } from '@storybook/addon-actions';
 import Button from '@stories/components/button'
