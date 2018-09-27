@@ -1,4 +1,18 @@
 @alert-prefixCls: rc-alert;
+@success-color: #0FBF73;
+@danger-color: #FF3B27;
+@warning-color: rgb(255, 167, 40);
+
+.setColor(@color) {
+  & .@{alert-prefixCls}-icon {
+    color: @color;
+  }
+  & .@{alert-prefixCls}-content {
+    &-title {
+      color: @color;
+    }
+  }
+}
 
 .@{alert-prefixCls} {
   position: relative;
@@ -43,13 +57,12 @@
   }
 
   &-success {
-    & .@{alert-prefixCls}-icon {
-      color: #0FBF73;
-    }
-    & .@{alert-prefixCls}-content {
-      &-title {
-        color: #0FBF73;
-      }
-    }
+    .setColor(@success-color);
+  }
+  &-danger {
+    .setColor(@danger-color);
+  }
+  &-warning {
+    .setColor(@warning-color);
   }
 }
