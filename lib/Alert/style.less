@@ -1,7 +1,23 @@
+@import '~@common/style/animate-util.less';
 @alert-prefixCls: rc-alert;
+@rc-alert-group-prefixCls: rc-alert-group;
 @success-color: #0FBF73;
 @danger-color: #FF3B27;
 @warning-color: rgb(255, 167, 40);
+@alert-height: 72px;
+@alert-width: 320px;
+@alert-padding: 15px 20px;
+@alert-background: #FFF;
+@alert-content-color: #666777;
+@alert-close-color: rgb(170, 171, 186);
+@alert-close-top: 26px;
+@alert-close-right: 20px;
+@alert-border-color: rgba(0, 0, 0, .1);
+@alertGroup-top: 50px;
+@alertGroup-right: 50px;
+
+@alert-animate-right: -30px;
+@alert-animate-cubic-bezier: cubic-bezier(.55, 0, .55, .2);
 
 .setColor(@color) {
   & .@{alert-prefixCls}-icon {
@@ -16,12 +32,12 @@
 
 .@{alert-prefixCls} {
   position: relative;
-  background: #FFF;
-  border: 1px solid rgba(0, 0, 0, .1);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
-  width: 320px;
-  height: 72px;
-  padding: 15px 20px;
+  background: @alert-background;
+  border: 1px solid @alert-border-color;
+  box-shadow: 0 2px 4px 0 @alert-border-color;
+  width: @alert-width;
+  height: @alert-height;
+  padding: @alert-padding;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
@@ -34,12 +50,12 @@
   &-close {
     position: absolute;
     font-size: 20px;
-    color: rgb(170, 171, 186);
-    top: 26px;
-    right: 20px;
+    color: @alert-close-color;
+    top: @alert-close-top;
+    right: @alert-close-right;
     cursor: pointer;
     &:hover {
-      color: #666777;
+      color: @alert-content-color;
     }
   }
 
@@ -52,7 +68,7 @@
     }
     &-body {
       font-size: 12px;
-      color: #666777;
+      color: @alert-content-color;
     }
   }
 
@@ -64,5 +80,50 @@
   }
   &-warning {
     .setColor(@warning-color);
+  }
+}
+
+.@{rc-alert-group-prefixCls} {
+  position: fixed;
+  top: @alertGroup-top;
+  right: @alertGroup-right;
+  z-index: 9999;
+
+  &-enter {
+    opacity: 0;
+    right: @alert-animate-right;
+    .animate-config(.3s, @alert-animate-cubic-bezier);
+  }
+  &-leave {
+    .animate-config(.3s, @alert-animate-cubic-bezier);
+  }
+  &-enter-active {
+    animation-name: rcAlertShow;
+    animation-play-state: running;
+  }
+  &-leave-active {
+    animation-name: rcAlertHide;
+    animation-play-state: running;
+  }
+}
+
+@keyframes rcAlertShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+@keyframes rcAlertHide {
+  0% {
+    opacity: 1;
+    right: 0px;
+  }
+  100% {
+    right: @alert-animate-right;
+    opacity: 0;
   }
 }
