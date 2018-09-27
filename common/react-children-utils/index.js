@@ -1,6 +1,7 @@
 import React from 'react'
 
 export function mapChildrenToArray (children) {
+  // docs: React.Children.forEach:
   // If children is a keyed fragment or array it will be traversed
   // If children is null or undefined, returns null or undefined rather than an array.
   let ret = []
