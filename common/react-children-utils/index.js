@@ -33,8 +33,8 @@ export function findChildInChildrenByKey (children, key) {
         if (ret) {
           throw new Error('two child same key in <target-component>, please checkout to make sure unique key!')
         }
+        ret = child
       }
-      ret = child
     })
   }
   return ret
