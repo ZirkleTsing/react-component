@@ -3,7 +3,9 @@ import { Button } from '@/Button';
 import { action } from '@storybook/addon-actions';
 import './style.less';
 
-export default () => {
+export const name = 'Button'
+
+function ButtonComp () {
   return (
     <React.Fragment>
       <div style={{ marginBottom: '10px' }}>
@@ -62,3 +64,7 @@ export default () => {
     </React.Fragment>
   )
 }
+
+ButtonComp.compName = 'Button'
+
+export default ButtonComp

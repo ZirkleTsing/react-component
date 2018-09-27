@@ -7,7 +7,7 @@ import Alert from '@stories/components/alert'
 
 const storybook = [
   {
-    directory: 'Button',
+    directory: Button.compName,
     stories: [
       {
         name: '常规',
@@ -15,7 +15,7 @@ const storybook = [
       }
     ]
   }, {
-    directory: 'Animate',
+    directory: Animate.compName,
     stories: [
       {
         name: '常规',
@@ -23,7 +23,7 @@ const storybook = [
       }
     ]
   }, {
-    directory: 'Alert',
+    directory: Alert.compName,
     stories: [
       {
         name: '常规',

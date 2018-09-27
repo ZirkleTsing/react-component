@@ -3,6 +3,7 @@ import alert from '@/Alert'
 import Button from '@/Button'
 
 export default class extends React.Component {
+  static compName = 'Alert'
   alertClick = () => alert({ msg: '小刘鸭!' })
 
   render () {
