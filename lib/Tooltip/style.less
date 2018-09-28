@@ -1,0 +1,70 @@
+@import '~@common/style/animate-util.less';
+@alert-animate-cubic-bezier: cubic-bezier(.55, 0, .55, .2);
+
+@container: rc-tooltip-container;
+@rc-tooltip: rc-tooltip;
+
+.@{container} {
+  &-appear, &-enter {
+    opacity: 0;
+    .animate-config(.3s, @alert-animate-cubic-bezier);
+  }
+  &-leave {
+    @alert-animate-cubic-bezier: cubic-bezier(.55, 0, .55, .2);
+  }
+  &-appear-active, &-enter-active {
+    animation-name: rcTooltipShow;
+    animation-play-state: running;
+  }
+  &-leave-active {
+    animation-name: rcTooltipHide;
+    animation-play-state: running;
+  }
+}
+
+
+@keyframes rcTooltipShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rcTooltipHide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.@{rc-tooltip} {
+  position: relative;
+  display: inline-block;
+  padding: 6px 8px;
+  background-color: rgba(0, 0, 0, .75);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  min-height: 32px;
+  word-wrap: break-word;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+
+  &::after {
+    position: absolute;
+    content: '';
+    left: 20%;
+    bottom: -3px;
+    width: 0;
+    height: 0;
+    border-width: 5px 5px 0;
+    border-top-color: rgba(0, 0, 0, 0.75);
+    border-style: solid;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+}
