@@ -2,9 +2,24 @@
 @alert-animate-cubic-bezier: cubic-bezier(.55, 0, .55, .2);
 
 @container: rc-tooltip-container;
-@rc-tooltip: rc-tooltip;
+@rc-tooltip: rc-tooltip-popover;
 
 @tooltip-transform-origin: 0px 45px 0px;
+@tooltip-arrow-color: rgba(0, 0, 0, 0.75);
+@tooltip-arrow-box-shadow: rgba(0, 0, 0, 0.15);
+
+@tooltip-placement-top-border-width: 5px 5px 0;
+@tooptip-placement-bottom-border-width: 0 5px 5px;
+
+.tooltip-common(@box-shadow) {
+  position: absolute;
+  content: '';
+  left: 20%;
+  width: 0;
+  height: 0;
+  box-shadow: 0 2px 8px @box-shadow;
+  border-style: solid;
+}
 
 .@{container} {
   &-appear, &-enter {
@@ -12,7 +27,7 @@
     .animate-config(.2s, @alert-animate-cubic-bezier);
   }
   &-leave {
-    @alert-animate-cubic-bezier: cubic-bezier(.55, 0, .55, .2);
+    .animate-config(.2s, @alert-animate-cubic-bezier);
   }
   &-appear-active, &-enter-active {
     transform-origin: @tooltip-transform-origin;
@@ -69,8 +84,8 @@
   position: relative;
   display: inline-block;
   padding: 6px 8px;
-  background-color: rgba(0, 0, 0, .75);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: @tooltip-arrow-color;
+  box-shadow: 0 2px 8px @tooltip-arrow-box-shadow;
   border-radius: 4px;
   min-height: 32px;
   word-wrap: break-word;
@@ -78,17 +93,24 @@
   text-align: left;
   text-decoration: none;
 
-  &::after {
-    position: absolute;
-    content: '';
-    left: 20%;
-    bottom: -3px;
-    width: 0;
-    height: 0;
-    border-width: 5px 5px 0;
-    border-top-color: rgba(0, 0, 0, 0.75);
-    border-style: solid;
-    border-left-color: transparent;
-    border-right-color: transparent;
+  &-placement-top {
+    &::after {
+      .tooltip-common(@tooltip-arrow-box-shadow);
+      bottom: -5px;
+      border-width: @tooltip-placement-top-border-width;
+      border-top-color: @tooltip-arrow-color;
+      border-left-color: transparent;
+      border-right-color: transparent;
+    }
+  }
+  &-placement-bottom {
+    &::after {
+      .tooltip-common(@tooltip-arrow-box-shadow);
+      top: -5px;
+      border-width: @tooltip-placement-bottom-border-width;
+      border-bottom-color: @tooltip-arrow-color;
+      border-left-color: transparent;
+      border-right-color: transparent;
+    }
   }
 }
