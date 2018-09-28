@@ -4,19 +4,23 @@
 @container: rc-tooltip-container;
 @rc-tooltip: rc-tooltip;
 
+@tooltip-transform-origin: 0px 45px 0px;
+
 .@{container} {
   &-appear, &-enter {
     opacity: 0;
-    .animate-config(.3s, @alert-animate-cubic-bezier);
+    .animate-config(.2s, @alert-animate-cubic-bezier);
   }
   &-leave {
     @alert-animate-cubic-bezier: cubic-bezier(.55, 0, .55, .2);
   }
   &-appear-active, &-enter-active {
+    transform-origin: @tooltip-transform-origin;
     animation-name: rcTooltipShow;
     animation-play-state: running;
   }
   &-leave-active {
+    transform-origin: @tooltip-transform-origin;
     animation-name: rcTooltipHide;
     animation-play-state: running;
   }
@@ -26,18 +30,38 @@
 @keyframes rcTooltipShow {
   0% {
     opacity: 0;
+    transform: scale(.7);
+  }
+  30% {
+    opacity: .42;
+    transform: scale(.9);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
   }
   100% {
-    opacity: 1;
+   opacity: 1;
+   transform: scale(1);
   }
 }
 
 @keyframes rcTooltipHide {
   0% {
     opacity: 1;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70% {
+    opacity: .42;
+    transform: scale(.9);
   }
   100% {
     opacity: 0;
+    transform: scale(.7);
   }
 }
 
