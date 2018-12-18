@@ -46,7 +46,7 @@ const baseConfig = {
       title: 'story',
       filename: 'story.html',
       template: path.join(appRoot, 'template.html'),
-      chunks: ['story']
+      chunks: ['app', 'story']
     })
   ],
   devtool: 'inline-source-map',
