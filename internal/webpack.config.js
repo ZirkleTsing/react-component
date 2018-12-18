@@ -7,7 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = {
   mode: getMode(process.env.NODE_ENV),
   entry: {
-    app: path.join(appRoot, 'index.js')
+    app: path.join(appRoot, 'index.js'),
+    story: path.join(appRoot, '/stories/index.js')
   },
   output: {
     filename: '[name].[hash].js',
@@ -38,7 +39,14 @@ const baseConfig = {
     new HtmlWebpackPlugin({
       title: 'lib',
       filename: 'index.html',
-      template: path.join(appRoot, 'template.html')
+      template: path.join(appRoot, 'template.html'),
+      chunks: ['app']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'story',
+      filename: 'story.html',
+      template: path.join(appRoot, 'template.html'),
+      chunks: ['story']
     })
   ],
   devtool: 'inline-source-map',
@@ -46,7 +54,8 @@ const baseConfig = {
     extensions: ['.js'],
     alias: {
       '@common': path.join(appRoot, 'common'),
-      '@': path.join(appRoot, 'lib')
+      '@': path.join(appRoot, 'lib'),
+      '@stories': path.join(appRoot, 'stories')
     }
   },
   module: {
